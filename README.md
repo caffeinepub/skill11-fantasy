@@ -1,2 +1,3 @@
-# skill11-fantasy
-Exported from Caffeine project: Skill11 Fantasy
+## Skill11 Fantasy
+
+To run app build and run docker image: `docker build -t app . docker run -it --network host app`

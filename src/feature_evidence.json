@@ -1,0 +1,197 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-implement-user-registration-and-authentication-system-using-internet-identity-integration-allowing-users-to-create-accounts-and-securely-log-in-to-the-platform",
+      "featureTitle": "Implement user registration and authentication system using Internet Identity integration allowing users to create accounts and securely log in to the platform",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/ProfileSetupModal.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-ipl-match-listing-feature-displaying-upcoming-and-live-ipl-matches-with-match-details-teams-venue-date-time-and-real-time-score-updates",
+      "featureTitle": "Create IPL match listing feature displaying upcoming and live IPL matches with match details (teams, venue, date/time) and real-time score updates",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/MatchCard.tsx",
+        "frontend/src/components/MatchList.tsx",
+        "frontend/src/pages/MatchesPage.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-build-fantasy-team-creation-interface-allowing-users-to-select-11-players-1-4-wicketkeepers-3-6-batsmen-1-4-all-rounders-3-6-bowlers-from-the-two-competing-teams-within-a-100-credit-budget-and-designate-a-captain-2x-points-and-vice-captain-1-5x-points",
+      "featureTitle": "Build fantasy team creation interface allowing users to select 11 players (1-4 wicketkeepers, 3-6 batsmen, 1-4 all-rounders, 3-6 bowlers) from the two competing teams within a 100-credit budget, and designate a captain (2x points) and vice-captain (1.5x points)",
+      "files": [
+        "frontend/src/components/MatchCard.tsx",
+        "frontend/src/components/PlayerCard.tsx",
+        "frontend/src/components/TeamBuilder.tsx",
+        "frontend/src/pages/CreateTeamPage.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-contest-entry-system-displaying-available-low-entry-contests-10-100-entry-fees-for-each-match-showing-prize-pool-entry-fee-total-spots-and-spots-filled-allowing-users-to-join-contests-with-their-created-teams",
+      "featureTitle": "Implement contest entry system displaying available low-entry contests (₹10–₹100 entry fees) for each match, showing prize pool, entry fee, total spots, and spots filled, allowing users to join contests with their created teams",
+      "files": [
+        "frontend/src/components/ContestCard.tsx",
+        "frontend/src/components/ContestList.tsx",
+        "frontend/src/components/MatchCard.tsx",
+        "frontend/src/components/TeamSelectionModal.tsx",
+        "frontend/src/pages/ContestsPage.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-integrate-payment-gateway-stripe-for-users-to-add-funds-to-their-wallet-supporting-deposits-in-10-10-000-range-with-secure-transaction-processing",
+      "featureTitle": "Integrate payment gateway (Stripe) for users to add funds to their wallet, supporting deposits in ₹10–₹10,000 range with secure transaction processing",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/PaymentSetup.tsx",
+        "frontend/src/components/WalletRecharge.tsx",
+        "frontend/src/pages/PaymentFailurePage.tsx",
+        "frontend/src/pages/PaymentSuccessPage.tsx",
+        "frontend/src/pages/WalletPage.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-create-leaderboard-interface-showing-real-time-rankings-of-all-teams-in-a-contest-sorted-by-fantasy-points-displaying-team-name-rank-and-total-points-with-final-results-declaring-winners-when-match-concludes",
+      "featureTitle": "Create leaderboard interface showing real-time rankings of all teams in a contest sorted by fantasy points, displaying team name, rank, and total points, with final results declaring winners when match concludes",
+      "files": [
+        "frontend/src/components/ContestCard.tsx",
+        "frontend/src/components/Leaderboard.tsx",
+        "frontend/src/components/LeaderboardRow.tsx",
+        "frontend/src/pages/LeaderboardPage.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-wallet-system-for-managing-user-balance-tracking-deposits-contest-entry-deductions-and-winnings-credits-with-transaction-history-viewable-by-users",
+      "featureTitle": "Implement wallet system for managing user balance, tracking deposits, contest entry deductions, and winnings credits, with transaction history viewable by users",
+      "files": [
+        "frontend/src/components/TransactionHistory.tsx",
+        "frontend/src/components/WalletBalance.tsx",
+        "frontend/src/pages/WalletPage.tsx"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-design-a-mobile-first-cohesive-visual-theme-with-vibrant-sports-inspired-colors-avoiding-blue-and-purple-bold-typography-for-headers-and-scores-clean-card-based-layouts-for-matches-and-contests-and-energetic-ui-elements-that-convey-excitement-and-competition-throughout-the-application",
+      "featureTitle": "Design a mobile-first, cohesive visual theme with vibrant sports-inspired colors (avoiding blue and purple), bold typography for headers and scores, clean card-based layouts for matches and contests, and energetic UI elements that convey excitement and competition throughout the application",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Layout.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "stripe@3.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "http-outcalls@3.0.0",
+        "authorization@4.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

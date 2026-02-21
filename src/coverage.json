@@ -1,0 +1,310 @@
+{
+  "kind": "coverage_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-21T19:34:49.313Z",
+  "sources": {
+    "buildRequest": true,
+    "implementationPlan": true
+  },
+  "requirements": {
+    "total": 9,
+    "implemented": 8,
+    "items": [
+      {
+        "id": "REQ-1",
+        "summary": "Implement user registration and authentication system using Internet Identity integration allowing users to create accounts and securely log in to the platform",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/LoginButton.tsx",
+          "frontend/src/components/ProfileSetupModal.tsx",
+          "frontend/src/hooks/useGetCallerUserProfile.ts",
+          "frontend/src/hooks/useSaveCallerUserProfile.ts",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProfileSetupModal.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Create IPL match listing feature displaying upcoming and live IPL matches with match details (teams, venue, date/time) and real-time score updates",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/MatchCard.tsx",
+          "frontend/src/components/MatchList.tsx",
+          "frontend/src/hooks/useGetAllMatches.ts",
+          "frontend/src/pages/MatchesPage.tsx",
+          "frontend/src/routes.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/MatchCard.tsx",
+          "frontend/src/components/MatchList.tsx",
+          "frontend/src/pages/MatchesPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Build fantasy team creation interface allowing users to select 11 players (1-4 wicketkeepers, 3-6 batsmen, 1-4 all-rounders, 3-6 bowlers) from the two competing teams within a 100-credit budget, and designate a captain (2x points) and vice-captain (1.5x points)",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PlayerCard.tsx",
+          "frontend/src/components/TeamBuilder.tsx",
+          "frontend/src/components/TeamSummary.tsx",
+          "frontend/src/hooks/useGetAllPlayers.ts",
+          "frontend/src/hooks/useCreateFantasyTeam.ts",
+          "frontend/src/pages/CreateTeamPage.tsx",
+          "frontend/src/routes.tsx",
+          "frontend/src/components/MatchCard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PlayerCard.tsx",
+          "frontend/src/components/TeamBuilder.tsx",
+          "frontend/src/pages/CreateTeamPage.tsx",
+          "frontend/src/components/MatchCard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Implement contest entry system displaying available low-entry contests (₹10–₹100 entry fees) for each match, showing prize pool, entry fee, total spots, and spots filled, allowing users to join contests with their created teams",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ContestCard.tsx",
+          "frontend/src/components/ContestList.tsx",
+          "frontend/src/components/TeamSelectionModal.tsx",
+          "frontend/src/hooks/useGetContestsForMatch.ts",
+          "frontend/src/hooks/useGetMyFantasyTeams.ts",
+          "frontend/src/hooks/useJoinContest.ts",
+          "frontend/src/pages/ContestsPage.tsx",
+          "frontend/src/routes.tsx",
+          "frontend/src/components/MatchCard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ContestCard.tsx",
+          "frontend/src/components/ContestList.tsx",
+          "frontend/src/components/TeamSelectionModal.tsx",
+          "frontend/src/pages/ContestsPage.tsx",
+          "frontend/src/components/MatchCard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Integrate payment gateway (Stripe) for users to add funds to their wallet, supporting deposits in ₹10–₹10,000 range with secure transaction processing",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/PaymentSetup.tsx",
+          "frontend/src/hooks/useCreateCheckoutSession.ts",
+          "frontend/src/components/WalletRecharge.tsx",
+          "frontend/src/pages/PaymentSuccessPage.tsx",
+          "frontend/src/pages/PaymentFailurePage.tsx",
+          "frontend/src/routes.tsx",
+          "frontend/src/pages/WalletPage.tsx",
+          "frontend/src/routes.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/PaymentSetup.tsx",
+          "frontend/src/components/WalletRecharge.tsx",
+          "frontend/src/pages/PaymentSuccessPage.tsx",
+          "frontend/src/pages/PaymentFailurePage.tsx",
+          "frontend/src/pages/WalletPage.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Build scoring engine that calculates fantasy points for each player based on cricket performance metrics (runs, wickets, catches, run-outs, strike rate, economy rate) and updates user team scores in real-time during live matches",
+        "status": "unknown",
+        "plannedFiles": [],
+        "matchedFiles": []
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Create leaderboard interface showing real-time rankings of all teams in a contest sorted by fantasy points, displaying team name, rank, and total points, with final results declaring winners when match concludes",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/LeaderboardRow.tsx",
+          "frontend/src/components/Leaderboard.tsx",
+          "frontend/src/hooks/useGetContest.ts",
+          "frontend/src/pages/LeaderboardPage.tsx",
+          "frontend/src/routes.tsx",
+          "frontend/src/components/ContestCard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/LeaderboardRow.tsx",
+          "frontend/src/components/Leaderboard.tsx",
+          "frontend/src/pages/LeaderboardPage.tsx",
+          "frontend/src/components/ContestCard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Implement wallet system for managing user balance, tracking deposits, contest entry deductions, and winnings credits, with transaction history viewable by users",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/TransactionHistory.tsx",
+          "frontend/src/components/WalletBalance.tsx",
+          "frontend/src/hooks/useGetWalletBalance.ts",
+          "frontend/src/hooks/useGetWalletTransactions.ts",
+          "frontend/src/pages/WalletPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/TransactionHistory.tsx",
+          "frontend/src/components/WalletBalance.tsx",
+          "frontend/src/pages/WalletPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Design a mobile-first, cohesive visual theme with vibrant sports-inspired colors (avoiding blue and purple), bold typography for headers and scores, clean card-based layouts for matches and contests, and energetic UI elements that convey excitement and competition throughout the application",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/index.css",
+          "frontend/tailwind.config.js",
+          "frontend/src/components/Layout.tsx",
+          "frontend/src/App.tsx"
+        ]
+      }
+    ]
+  },
+  "changedFiles": [
+    "backend/authorization/MixinAuthorization.mo",
+    "backend/authorization/access-control.mo",
+    "backend/http-outcalls/outcall.mo",
+    "backend/main.mo",
+    "backend/stripe/stripe.mo",
+    "build-request.json",
+    "build-template/Dockerfile",
+    "build-template/LICENSE",
+    "build-template/README.md",
+    "build-template/deploy.sh",
+    "build-template/icp.yaml",
+    "build-template/package.json",
+    "build-template/pnpm-lock.yaml",
+    "build-template/pnpm-workspace.yaml",
+    "build-template/scripts/prune-unused-images.js",
+    "build-template/scripts/resize-images.js",
+    "build-template/src/backend/canister.yaml",
+    "build-template/src/backend/system-idl/aaaaa-aa.did",
+    "build-template/src/frontend/canister.yaml",
+    "build-template/src/frontend/components.json",
+    "build-template/src/frontend/env.json",
+    "build-template/src/frontend/eslint-rules/no-bigint-in-query-keys.js",
+    "build-template/src/frontend/eslint-rules/require-internet-identity-provider.js",
+    "build-template/src/frontend/eslint.config.js",
+    "build-template/src/frontend/package.json",
+    "build-template/src/frontend/postcss.config.js",
+    "build-template/src/frontend/src/components/ui/accordion.tsx",
+    "build-template/src/frontend/src/components/ui/alert-dialog.tsx",
+    "build-template/src/frontend/src/components/ui/alert.tsx",
+    "build-template/src/frontend/src/components/ui/aspect-ratio.tsx",
+    "build-template/src/frontend/src/components/ui/avatar.tsx",
+    "build-template/src/frontend/src/components/ui/badge.tsx",
+    "build-template/src/frontend/src/components/ui/breadcrumb.tsx",
+    "build-template/src/frontend/src/components/ui/button.tsx",
+    "build-template/src/frontend/src/components/ui/calendar.tsx",
+    "build-template/src/frontend/src/components/ui/card.tsx",
+    "build-template/src/frontend/src/components/ui/carousel.tsx",
+    "build-template/src/frontend/src/components/ui/chart.tsx",
+    "build-template/src/frontend/src/components/ui/checkbox.tsx",
+    "build-template/src/frontend/src/components/ui/collapsible.tsx",
+    "build-template/src/frontend/src/components/ui/command.tsx",
+    "build-template/src/frontend/src/components/ui/context-menu.tsx",
+    "build-template/src/frontend/src/components/ui/dialog.tsx",
+    "build-template/src/frontend/src/components/ui/drawer.tsx",
+    "build-template/src/frontend/src/components/ui/dropdown-menu.tsx",
+    "build-template/src/frontend/src/components/ui/form.tsx",
+    "build-template/src/frontend/src/components/ui/hover-card.tsx",
+    "build-template/src/frontend/src/components/ui/input-otp.tsx",
+    "build-template/src/frontend/src/components/ui/input.tsx",
+    "build-template/src/frontend/src/components/ui/label.tsx",
+    "build-template/src/frontend/src/components/ui/menubar.tsx",
+    "build-template/src/frontend/src/components/ui/navigation-menu.tsx",
+    "build-template/src/frontend/src/components/ui/pagination.tsx",
+    "build-template/src/frontend/src/components/ui/popover.tsx",
+    "build-template/src/frontend/src/components/ui/progress.tsx",
+    "build-template/src/frontend/src/components/ui/radio-group.tsx",
+    "build-template/src/frontend/src/components/ui/resizable.tsx",
+    "build-template/src/frontend/src/components/ui/scroll-area.tsx",
+    "build-template/src/frontend/src/components/ui/select.tsx",
+    "build-template/src/frontend/src/components/ui/separator.tsx",
+    "build-template/src/frontend/src/components/ui/sheet.tsx",
+    "build-template/src/frontend/src/components/ui/sidebar.tsx",
+    "build-template/src/frontend/src/components/ui/skeleton.tsx",
+    "build-template/src/frontend/src/components/ui/slider.tsx",
+    "build-template/src/frontend/src/components/ui/sonner.tsx",
+    "build-template/src/frontend/src/components/ui/switch.tsx",
+    "build-template/src/frontend/src/components/ui/table.tsx",
+    "build-template/src/frontend/src/components/ui/tabs.tsx",
+    "build-template/src/frontend/src/components/ui/textarea.tsx",
+    "build-template/src/frontend/src/components/ui/toggle-group.tsx",
+    "build-template/src/frontend/src/components/ui/toggle.tsx",
+    "build-template/src/frontend/src/components/ui/tooltip.tsx",
+    "build-template/src/frontend/src/hooks/use-mobile.tsx",
+    "build-template/src/frontend/src/lib/utils.ts",
+    "build-template/src/frontend/tsconfig.json",
+    "build-template/src/frontend/vite.config.js",
+    "build-template/tsconfig.json",
+    "caffeine.lock.json",
+    "feature_evidence.json",
+    "frontend-file-summaries.txt",
+    "frontend-implementation-plan.json",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/public/assets/generated/empty-team.dim_400x400.png",
+    "frontend/public/assets/generated/hero-banner.dim_1200x400.png",
+    "frontend/public/assets/generated/skill11-logo.dim_256x256.png",
+    "frontend/public/assets/generated/stadium-bg.dim_800x600.png",
+    "frontend/public/assets/generated/trophy-icon.dim_128x128.png",
+    "frontend/public/assets/generated/wallet-icon.dim_128x128.png",
+    "frontend/src/App.tsx",
+    "frontend/src/backend.d.ts",
+    "frontend/src/backend.ts",
+    "frontend/src/components/ContestCard.tsx",
+    "frontend/src/components/ContestList.tsx",
+    "frontend/src/components/Layout.tsx",
+    "frontend/src/components/Leaderboard.tsx",
+    "frontend/src/components/LeaderboardRow.tsx",
+    "frontend/src/components/MatchCard.tsx",
+    "frontend/src/components/MatchList.tsx",
+    "frontend/src/components/PaymentSetup.tsx",
+    "frontend/src/components/PlayerCard.tsx",
+    "frontend/src/components/ProfileSetupModal.tsx",
+    "frontend/src/components/TeamBuilder.tsx",
+    "frontend/src/components/TeamSelectionModal.tsx",
+    "frontend/src/components/TransactionHistory.tsx",
+    "frontend/src/components/WalletBalance.tsx",
+    "frontend/src/components/WalletRecharge.tsx",
+    "frontend/src/config.ts",
+    "frontend/src/declarations/backend.did.d.ts",
+    "frontend/src/declarations/backend.did.js",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/ContestsPage.tsx",
+    "frontend/src/pages/CreateTeamPage.tsx",
+    "frontend/src/pages/LeaderboardPage.tsx",
+    "frontend/src/pages/MatchesPage.tsx",
+    "frontend/src/pages/PaymentFailurePage.tsx",
+    "frontend/src/pages/PaymentSuccessPage.tsx",
+    "frontend/src/pages/WalletPage.tsx",
+    "frontend/src/ui-summary.json",
+    "frontend/src/utils/StorageClient.ts",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json",
+    "scratch/component-selection.json",
+    "spec.md",
+    "spec_vs_diff_report.json"
+  ]
+}

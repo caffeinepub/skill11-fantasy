@@ -1,0 +1,364 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Skill11 Fantasy MVP - Frontend Implementation",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Implement Internet Identity authentication UI with user profile setup",
+      "acceptanceCriteria": [
+        "Users can register new accounts via Internet Identity",
+        "Users can log in securely using Internet Identity",
+        "User sessions persist across app usage",
+        "First-time users are prompted to create a profile with name"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LoginButton.tsx",
+          "operation": "create",
+          "description": "Create login/logout button component using useInternetIdentity hook from authorization component. Handle authentication state, loading states, and query cache clearing on logout. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/ProfileSetupModal.tsx",
+          "operation": "create",
+          "description": "Create modal component for first-time user profile setup. Prompt for name, optional email, and phone number. Use backend methods getCallerUserProfile and saveCallerUserProfile. Prevent modal flash by checking actor availability before showing modal. Verify the authorization component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useGetCallerUserProfile.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch current user profile with proper actor dependency handling to prevent modal flash on initial load. Return custom state that reflects actor loading state."
+        },
+        {
+          "path": "frontend/src/hooks/useSaveCallerUserProfile.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook to save user profile using saveCallerUserProfile backend method."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add LoginButton to app header/navigation. Integrate ProfileSetupModal that appears for authenticated users without profiles. Show modal only when actor is ready, user is authenticated, profile query is complete, and profile is null."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Create IPL match listing UI displaying upcoming and live matches with real-time updates",
+      "acceptanceCriteria": [
+        "Display list of upcoming IPL matches with team names, logos, venue, and scheduled time",
+        "Show live matches with real-time score updates",
+        "Users can view match details by selecting a match"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/MatchCard.tsx",
+          "operation": "create",
+          "description": "Create match card component displaying team names, venue, date/time, and match status. Use card-based layout with sports-inspired colors (greens, oranges, reds). Apply bold typography for team names and scores. Include stadium-bg.dim_800x600.png from frontend/public/assets/generated/ as card backdrop."
+        },
+        {
+          "path": "frontend/src/components/MatchList.tsx",
+          "operation": "create",
+          "description": "Create match list component that fetches and displays all matches using getAllMatches backend method. Filter and group by status (upcoming, live, completed). Implement polling for live match score updates. Use mobile-first responsive grid layout."
+        },
+        {
+          "path": "frontend/src/hooks/useGetAllMatches.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch all matches from backend using getAllMatches method. Enable automatic refetching with appropriate interval for live score updates."
+        },
+        {
+          "path": "frontend/src/pages/MatchesPage.tsx",
+          "operation": "create",
+          "description": "Create matches page component that renders MatchList. Include hero-banner.dim_1200x400.png from frontend/public/assets/generated/ at the top for energetic cricket action visuals. Add page title with bold typography."
+        },
+        {
+          "path": "frontend/src/routes.tsx",
+          "operation": "modify",
+          "description": "Add route for /matches path to MatchesPage component using @tanstack/router."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add navigation link to Matches page in app navigation/header."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Build fantasy team creation interface with player selection, role constraints, and captain designation",
+      "acceptanceCriteria": [
+        "UI displays player list categorized by role with credit values",
+        "Users can select exactly 11 players within role constraints",
+        "Total credits must not exceed 100",
+        "Users must select 1 captain and 1 vice-captain",
+        "Users can edit team until match start time"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PlayerCard.tsx",
+          "operation": "create",
+          "description": "Create player card component displaying player name, team, position, credits, and selection state. Use card-based layout with energetic UI styling. Include visual indicators for captain and vice-captain selection."
+        },
+        {
+          "path": "frontend/src/components/TeamBuilder.tsx",
+          "operation": "create",
+          "description": "Create team builder component with player list grouped by position (wicketkeepers, batsmen, all-rounders, bowlers). Fetch players using getAllPlayers backend method. Implement selection logic enforcing 11 player limit, role constraints (1-4 WK, 3-6 batsmen, 1-4 all-rounders, 3-6 bowlers), 100-credit budget, and captain/vice-captain designation. Display running totals for credits and player counts. Show empty-team.dim_400x400.png from frontend/public/assets/generated/ when no players selected."
+        },
+        {
+          "path": "frontend/src/components/TeamSummary.tsx",
+          "operation": "create",
+          "description": "Create team summary component showing selected players with captain (2x) and vice-captain (1.5x) badges. Display total credits used and validation status. Include save button to submit team."
+        },
+        {
+          "path": "frontend/src/hooks/useGetAllPlayers.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch all players from backend using getAllPlayers method."
+        },
+        {
+          "path": "frontend/src/hooks/useCreateFantasyTeam.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook to create fantasy team using createFantasyTeam backend method with matchId, playerIds, captainId, and viceCaptainId."
+        },
+        {
+          "path": "frontend/src/pages/CreateTeamPage.tsx",
+          "operation": "create",
+          "description": "Create team creation page component rendering TeamBuilder and TeamSummary. Accept matchId from route params. Validate match has not started before allowing team creation. Show success message and redirect to contests page after team creation."
+        },
+        {
+          "path": "frontend/src/routes.tsx",
+          "operation": "modify",
+          "description": "Add route for /matches/$matchId/create-team path to CreateTeamPage component using @tanstack/router with matchId parameter."
+        },
+        {
+          "path": "frontend/src/components/MatchCard.tsx",
+          "operation": "modify",
+          "description": "Add 'Create Team' button on match cards that navigates to /matches/$matchId/create-team. Disable button if match has already started."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Implement contest listing and entry UI showing available contests with details and join functionality",
+      "acceptanceCriteria": [
+        "Display list of contests for each match filtered to ₹10–₹100 entry range",
+        "Show contest details: entry fee, prize pool, total spots, filled spots",
+        "Users can join a contest if they have sufficient wallet balance",
+        "Users cannot join same contest multiple times with same team"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ContestCard.tsx",
+          "operation": "create",
+          "description": "Create contest card component displaying entry fee, prize pool (with trophy-icon.dim_128x128.png from frontend/public/assets/generated/), total spots, and spots filled with progress indicator. Use energetic sports-inspired styling with bold typography for prize amounts. Show join button when spots available."
+        },
+        {
+          "path": "frontend/src/components/ContestList.tsx",
+          "operation": "create",
+          "description": "Create contest list component fetching contests for a match using getContestsForMatch backend method. Display contests filtered to ₹10–₹100 range. Show user's current wallet balance. Use card-based mobile-first layout."
+        },
+        {
+          "path": "frontend/src/components/TeamSelectionModal.tsx",
+          "operation": "create",
+          "description": "Create modal for selecting which fantasy team to use when joining a contest. Fetch user's teams for the match using getMyFantasyTeams. Show team details with player names, captain/vice-captain indicators. Validate sufficient wallet balance before enabling join."
+        },
+        {
+          "path": "frontend/src/hooks/useGetContestsForMatch.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch contests for a specific match using getContestsForMatch backend method."
+        },
+        {
+          "path": "frontend/src/hooks/useGetMyFantasyTeams.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch current user's fantasy teams using getMyFantasyTeams backend method."
+        },
+        {
+          "path": "frontend/src/hooks/useJoinContest.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook to join contest using joinContest backend method with contestId and teamId. Handle insufficient balance errors gracefully."
+        },
+        {
+          "path": "frontend/src/pages/ContestsPage.tsx",
+          "operation": "create",
+          "description": "Create contests page component rendering ContestList and TeamSelectionModal. Accept matchId from route params. Show match details at top. Display success notification after joining contest."
+        },
+        {
+          "path": "frontend/src/routes.tsx",
+          "operation": "modify",
+          "description": "Add route for /matches/$matchId/contests path to ContestsPage component using @tanstack/router with matchId parameter."
+        },
+        {
+          "path": "frontend/src/components/MatchCard.tsx",
+          "operation": "modify",
+          "description": "Add 'View Contests' button on match cards that navigates to /matches/$matchId/contests."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Integrate Stripe payment UI for wallet recharge functionality",
+      "acceptanceCriteria": [
+        "Users can initiate wallet recharge from app interface",
+        "Stripe payment flow handles secure payment processing",
+        "Successful payments credit user wallet balance immediately",
+        "Failed transactions do not modify wallet balance"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/PaymentSetup.tsx",
+          "operation": "create",
+          "description": "Create admin payment setup component for Stripe configuration. Use isStripeConfigured and setStripeConfiguration backend methods. Show only to admin users when Stripe not yet configured. Collect Stripe secret key and allowed countries. Verify the stripe component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/hooks/useCreateCheckoutSession.ts",
+          "operation": "create",
+          "description": "Create React Query mutation hook for Stripe checkout session. Use createCheckoutSession backend method with ShoppingItem array. Parse JSON response to extract CheckoutSession with id and url. Set successUrl to /payment-success and cancelUrl to /payment-failure. Validate that session.url exists before returning. Verify the stripe component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/WalletRecharge.tsx",
+          "operation": "create",
+          "description": "Create wallet recharge component with amount input (₹10-₹10,000 range). Use useCreateCheckoutSession hook. On submission, create ShoppingItem for wallet recharge and redirect to Stripe checkout URL using window.location.href (not router navigation). Show error if session.url is missing. Include wallet-icon.dim_128x128.png from frontend/public/assets/generated/. Verify the stripe component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/PaymentSuccessPage.tsx",
+          "operation": "create",
+          "description": "Create payment success page displaying success message and redirecting user to wallet page. Invalidate wallet balance query to refresh balance. Verify the stripe component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/PaymentFailurePage.tsx",
+          "operation": "create",
+          "description": "Create payment failure page displaying error message and retry option. Provide button to return to wallet page. Verify the stripe component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/routes.tsx",
+          "operation": "modify",
+          "description": "Add routes for /payment-success and /payment-failure paths to PaymentSuccessPage and PaymentFailurePage components respectively using @tanstack/router. Verify the stripe component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/WalletPage.tsx",
+          "operation": "create",
+          "description": "Create wallet page rendering current balance, WalletRecharge component, and transaction history. Fetch balance using getWalletBalance and transactions using getWalletTransactions backend methods. Use wallet-icon.dim_128x128.png from frontend/public/assets/generated/."
+        },
+        {
+          "path": "frontend/src/routes.tsx",
+          "operation": "modify",
+          "description": "Add route for /wallet path to WalletPage component using @tanstack/router."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add navigation link to Wallet page in app navigation. For admin users, include PaymentSetup component if Stripe not configured."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Create leaderboard UI showing real-time contest rankings with team scores and winner highlights",
+      "acceptanceCriteria": [
+        "Leaderboard displays all teams in contest ranked by total points",
+        "Rankings update in real-time during live matches",
+        "Final rankings are locked when match ends",
+        "Winners are highlighted with prize amounts",
+        "Users can view their own rank and score"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/LeaderboardRow.tsx",
+          "operation": "create",
+          "description": "Create leaderboard row component displaying rank, team owner name, team score, and prize amount (if winner). Highlight current user's team. Use bold typography for scores and ranks. Show trophy-icon.dim_128x128.png from frontend/public/assets/generated/ for top 3 positions."
+        },
+        {
+          "path": "frontend/src/components/Leaderboard.tsx",
+          "operation": "create",
+          "description": "Create leaderboard component fetching contest details using getContest backend method. Sort participants by points descending. Implement polling for real-time updates during live matches. Display current user's rank prominently at top. Use mobile-first table/list layout with competitive visual styling."
+        },
+        {
+          "path": "frontend/src/hooks/useGetContest.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch contest details using getContest backend method. Enable automatic refetching for live leaderboard updates."
+        },
+        {
+          "path": "frontend/src/pages/LeaderboardPage.tsx",
+          "operation": "create",
+          "description": "Create leaderboard page component rendering Leaderboard. Accept contestId from route params. Show contest details (entry fee, prize pool) at top. Display match information."
+        },
+        {
+          "path": "frontend/src/routes.tsx",
+          "operation": "modify",
+          "description": "Add route for /contests/$contestId/leaderboard path to LeaderboardPage component using @tanstack/router with contestId parameter."
+        },
+        {
+          "path": "frontend/src/components/ContestCard.tsx",
+          "operation": "modify",
+          "description": "Add 'View Leaderboard' button on contest cards that navigates to /contests/$contestId/leaderboard. Show button for contests user has joined."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Implement wallet UI showing balance and transaction history",
+      "acceptanceCriteria": [
+        "Users can view current balance in app",
+        "Users can view transaction history with timestamps and amounts",
+        "Transaction types are clearly labeled (deposit, entry, winnings)"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/TransactionHistory.tsx",
+          "operation": "create",
+          "description": "Create transaction history component displaying list of wallet transactions. Fetch using getWalletTransactions backend method. Show transaction type, amount (with + for credits, - for debits), and formatted timestamp. Use card-based layout with clear visual distinction between transaction types."
+        },
+        {
+          "path": "frontend/src/components/WalletBalance.tsx",
+          "operation": "create",
+          "description": "Create wallet balance display component showing current balance prominently. Fetch using getWalletBalance backend method. Use bold typography and wallet-icon.dim_128x128.png from frontend/public/assets/generated/. Auto-refresh when balance changes."
+        },
+        {
+          "path": "frontend/src/hooks/useGetWalletBalance.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch wallet balance using getWalletBalance backend method."
+        },
+        {
+          "path": "frontend/src/hooks/useGetWalletTransactions.ts",
+          "operation": "create",
+          "description": "Create React Query hook to fetch wallet transactions using getWalletTransactions backend method."
+        },
+        {
+          "path": "frontend/src/pages/WalletPage.tsx",
+          "operation": "modify",
+          "description": "Integrate WalletBalance and TransactionHistory components into wallet page. Arrange in mobile-first layout with balance at top, recharge section below, and transaction history at bottom."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Apply mobile-first sports-inspired visual theme with vibrant colors, bold typography, and energetic UI elements",
+      "acceptanceCriteria": [
+        "Visual theme uses sports-inspired color palette (e.g., greens, oranges, reds) consistently",
+        "Typography hierarchy is clear with bold fonts for important data",
+        "Layout is optimized for mobile screens with touch-friendly controls",
+        "UI components follow consistent design patterns across all screens",
+        "Design conveys energy and competitive spirit appropriate for fantasy sports"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global CSS custom properties for sports-inspired color palette (greens, oranges, reds, yellows for energy). Set up bold font weights for headings. Establish base mobile-first styles. Apply skill11-logo.dim_256x256.png from frontend/public/assets/generated/ as app branding element in appropriate contexts."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend Tailwind theme with custom sports-inspired colors (e.g., cricket-green, energy-orange, vibrant-red, trophy-gold). Configure bold font weights for fantasy sports typography. Set up mobile-first breakpoints. Define shadow and border utilities for competitive card designs."
+        },
+        {
+          "path": "frontend/src/components/Layout.tsx",
+          "operation": "create",
+          "description": "Create layout wrapper component applying consistent header with skill11-logo.dim_256x256.png from frontend/public/assets/generated/, navigation, and footer across all pages. Use sports-inspired background colors. Implement mobile-first responsive design with touch-friendly spacing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wrap application routes with Layout component to apply consistent visual theme and structure. Ensure navigation uses energetic styling with bold typography."
+        }
+      ]
+    }
+  ]
+}

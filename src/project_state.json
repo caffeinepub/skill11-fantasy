@@ -1,0 +1,142 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 3,
+  "summary": "Production-ready MVP fantasy sports mobile application named Skill11 Fantasy, similar to Dream11, focused on low-entry contests (₹10–₹100) for skill-based cricket fantasy platform starting with IPL matches",
+  "architectural_notes": [
+    "Mobile-first application targeting both iOS and Android platforms",
+    "Low-entry contests only (₹10–₹100 range) to comply with skill-based gaming regulations",
+    "Focus on IPL cricket matches as initial sport offering",
+    "Payment gateway integration required for real-money transactions",
+    "Live scoring integration needed for real-time match updates"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Cricket-themed app logo with 'Skill11' branding in bold, modern font with cricket ball or bat element (skill11-logo.dim_256x256.png)\n- Hero banner showing energetic cricket action scene with vibrant colors suitable for mobile landing screen (hero-banner.dim_1200x400.png)\n- Cricket stadium background illustration with subtle crowd and field for contest cards backdrop (stadium-bg.dim_800x600.png)\n- Empty state illustration of cricket player with bat in ready stance for when no teams created yet (empty-team.dim_400x400.png)\n- Trophy icon illustration in gold/yellow for winners and prizes (trophy-icon.dim_128x128.png)\n- Wallet/money icon illustration for balance and transactions section (wallet-icon.dim_128x128.png)",
+  "existing_features": [
+    {
+      "id": "feature-implement-user-registration-and-authentication-system-using-internet-identity-integration-allowing-users-to-create-accounts-and-securely-log-in-to-the-platform",
+      "title": "Implement user registration and authentication system using Internet Identity integration allowing users to create accounts and securely log in to the platform",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-ipl-match-listing-feature-displaying-upcoming-and-live-ipl-matches-with-match-details-teams-venue-date-time-and-real-time-score-updates",
+      "title": "Create IPL match listing feature displaying upcoming and live IPL matches with match details (teams, venue, date/time) and real-time score updates",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-build-fantasy-team-creation-interface-allowing-users-to-select-11-players-1-4-wicketkeepers-3-6-batsmen-1-4-all-rounders-3-6-bowlers-from-the-two-competing-teams-within-a-100-credit-budget-and-designate-a-captain-2x-points-and-vice-captain-1-5x-points",
+      "title": "Build fantasy team creation interface allowing users to select 11 players (1-4 wicketkeepers, 3-6 batsmen, 1-4 all-rounders, 3-6 bowlers) from the two competing teams within a 100-credit budget, and designate a captain (2x points) and vice-captain (1.5x points)",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-contest-entry-system-displaying-available-low-entry-contests-10-100-entry-fees-for-each-match-showing-prize-pool-entry-fee-total-spots-and-spots-filled-allowing-users-to-join-contests-with-their-created-teams",
+      "title": "Implement contest entry system displaying available low-entry contests (₹10–₹100 entry fees) for each match, showing prize pool, entry fee, total spots, and spots filled, allowing users to join contests with their created teams",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-payment-gateway-stripe-for-users-to-add-funds-to-their-wallet-supporting-deposits-in-10-10-000-range-with-secure-transaction-processing",
+      "title": "Integrate payment gateway (Stripe) for users to add funds to their wallet, supporting deposits in ₹10–₹10,000 range with secure transaction processing",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-leaderboard-interface-showing-real-time-rankings-of-all-teams-in-a-contest-sorted-by-fantasy-points-displaying-team-name-rank-and-total-points-with-final-results-declaring-winners-when-match-concludes",
+      "title": "Create leaderboard interface showing real-time rankings of all teams in a contest sorted by fantasy points, displaying team name, rank, and total points, with final results declaring winners when match concludes",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-wallet-system-for-managing-user-balance-tracking-deposits-contest-entry-deductions-and-winnings-credits-with-transaction-history-viewable-by-users",
+      "title": "Implement wallet system for managing user balance, tracking deposits, contest entry deductions, and winnings credits, with transaction history viewable by users",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-design-a-mobile-first-cohesive-visual-theme-with-vibrant-sports-inspired-colors-avoiding-blue-and-purple-bold-typography-for-headers-and-scores-clean-card-based-layouts-for-matches-and-contests-and-energetic-ui-elements-that-convey-excitement-and-competition-throughout-the-application",
+      "title": "Design a mobile-first, cohesive visual theme with vibrant sports-inspired colors (avoiding blue and purple), bold typography for headers and scores, clean card-based layouts for matches and contests, and energetic UI elements that convey excitement and competition throughout the application",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "User registration and authentication system",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "IPL match listing and live score integration",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Fantasy team creation with player selection",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Contest entry system for ₹10–₹100 entry fees",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Payment gateway integration for contest entries",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Scoring engine for fantasy points calculation",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Leaderboard and contest results display",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Wallet system for managing user balance and winnings",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Build scoring engine that calculates fantasy points for each player based on cricket performance metrics (runs, wickets, catches, run-outs, strike rate, economy rate) and updates user team scores in real-time during live matches",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Skill11 Fantasy",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}
